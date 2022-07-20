@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -10,3 +10,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app); //서비스만 받아옴
+export const googleAuth = new GoogleAuthProvider();//구글로그인
