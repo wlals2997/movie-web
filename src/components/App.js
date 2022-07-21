@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import AppRouter from './Router';
 import fbase from '../fbase';
 import { auth } from '../fbase';
+import { Navigate } from 'react-router-dom';
 function App() {
   const [init, setInit] = useState(false);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     //유저상태의 변화를 감지한다.

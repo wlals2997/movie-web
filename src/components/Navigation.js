@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const Navigation = ({ isLoggedIn }) => {
   return (
-    <>
+    <nav>
       <h2>
         <Link to='/'>영화메인로고</Link>
       </h2>
@@ -24,7 +24,7 @@ const Navigation = ({ isLoggedIn }) => {
           </li>
         )}
       </ul>
-    </>
+    </nav>
   );
 };
 

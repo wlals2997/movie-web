@@ -6,7 +6,9 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-const Auth = () => {
+import { useNavigate } from 'react-router-dom';
+
+const Auth = ({isLoggedIn}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState(true);
@@ -29,13 +31,13 @@ const Auth = () => {
       //New user 회원가입
       if (newAccount) {
         data = await createUserWithEmailAndPassword(auth, email, password);
+        document.location.href='/'
       } else {
         data = await signInWithEmailAndPassword(auth, email, password); //존재하는 유저일 경우
       }
       console.log(data);
     } catch (error) {
       const errorMessage = error.message;
-
       setError(errorMessage);
     }
   };
@@ -50,6 +52,7 @@ const Auth = () => {
     }
     const data = await signInWithPopup(auth, provider);
     console.log(data);
+    document.location.href='/'
   };
   return (
     <div>
