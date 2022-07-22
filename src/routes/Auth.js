@@ -8,10 +8,19 @@ import {
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
-const Auth = ({isLoggedIn}) => {
+const Auth = ({ isLoggedIn }) => {
+  //이메일동일확인
   const [email, setEmail] = useState('');
+ 
+
+  //비밀번호확인
   const [password, setPassword] = useState('');
+  const [passwordCheck, setPasswordCheck] = useState('');
+  const [passwordCheckMessage, setPasswordCheckMessage] = useState('');
+  const [isPassword, setIsPassword] = useState(false); //비밀번호유효성검사
+  //New user
   const [newAccount, setNewAccount] = useState(true);
+  //에러
   const [error, setError] = useState('');
   const auth = getAuth();
   const onChange = (e) => {
@@ -31,7 +40,7 @@ const Auth = ({isLoggedIn}) => {
       //New user 회원가입
       if (newAccount) {
         data = await createUserWithEmailAndPassword(auth, email, password);
-        document.location.href='/'
+        document.location.href = '/';
       } else {
         data = await signInWithEmailAndPassword(auth, email, password); //존재하는 유저일 경우
       }
@@ -41,6 +50,20 @@ const Auth = ({isLoggedIn}) => {
       setError(errorMessage);
     }
   };
+
+  const passwordCheckInput = (e) => {
+    //비밀번호확인
+    const { value } = e.target;
+    setPasswordCheck(value);
+    if (password === value) {
+      setPasswordCheckMessage('비밀번호가 같습니다.');
+      setIsPassword(true);
+    } else {
+      setPasswordCheckMessage('비밀번호가 동일하지 않습니다.');
+      setIsPassword(false);
+    }
+  };
+
   const toggleAccount = () => {
     setNewAccount((prev) => !prev);
   };
@@ -52,36 +75,64 @@ const Auth = ({isLoggedIn}) => {
     }
     const data = await signInWithPopup(auth, provider);
     console.log(data);
-    document.location.href='/'
+    document.location.href = '/';
   };
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input
-          name='email'
-          type='text'
-          placeholder='이메일'
-          value={email}
-          onChange={onChange}
-          required
-        ></input>
-        {/* <input
-          type='submit'
-          value='중복확인'
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        ></input> */}
+        {newAccount ? (
+          <>
+            <input
+              name='email'
+              type='text'
+              placeholder='이메일'
+              value={email}
+              onChange={onChange}
+              required
+            ></input>
+            <input
+              name='password'
+              type='password'
+              placeholder='비밀번호'
+              value={password}
+              onChange={onChange}
+            ></input>
+            <input
+              name='passwordCheck'
+              type='password'
+              placeholder='비밀번호확인'
+              value={passwordCheck}
+              onChange={passwordCheckInput}
+            ></input>
+            <span>{passwordCheckMessage}</span>
+          </>
+        ) : (
+          <>
+            <input
+              name='email'
+              type='text'
+              placeholder='이메일'
+              value={email}
+              onChange={onChange}
+              required
+            ></input>
+            <input
+              name='password'
+              type='password'
+              placeholder='비밀번호'
+              value={password}
+              onChange={onChange}
+            ></input>
+          </>
+        )}
 
         <input
-          name='password'
-          type='password'
-          placeholder='비밀번호'
-          value={password}
-          onChange={onChange}
+          type='submit'
+          value={newAccount ? '회원가입' : '로그인'}
+          disabled={!isPassword}
         ></input>
-        <input type='submit' value={newAccount ? '회원가입' : '로그인'}></input>
       </form>
+
       <span onClick={toggleAccount}>{newAccount ? '로그인' : '회원가입'}</span>
       <div>
         <button name='google' onClick={onSocialLogin}>
