@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const Navigation = ({ isLoggedIn }) => {
+const Navigation = ({ isLoggedIn,userObj }) => {
   return (
     <nav>
       <h2>
@@ -16,7 +16,7 @@ const Navigation = ({ isLoggedIn }) => {
         </li>
         {isLoggedIn ? (
           <li>
-            <Link to='/profile'>프로필</Link>
+            <Link to='/profile'>{userObj.displayName}</Link>
           </li>
         ) : (
           <li>
