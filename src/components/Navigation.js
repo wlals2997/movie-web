@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-const Navigation = ({ isLoggedIn,userObj }) => {
+
+const Navigation = ({ isLoggedIn, userObj }) => {
+ 
   return (
     <nav>
       <h2>
@@ -16,13 +18,14 @@ const Navigation = ({ isLoggedIn,userObj }) => {
         </li>
         {isLoggedIn ? (
           <li>
-            <Link to='/profile'>{userObj.displayName}</Link>
+            <Link to='/profile'>프로필</Link>
           </li>
         ) : (
           <li>
             <Link to='/login'>로그인</Link>
           </li>
         )}
+       
       </ul>
     </nav>
   );

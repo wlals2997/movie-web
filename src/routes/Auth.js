@@ -7,12 +7,13 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
+import { dbService, storageService } from 'fbase';
+import { addDoc, collection } from 'firebase/firestore';
 const Auth = ({ isLoggedIn }) => {
   //이메일동일확인
   const [email, setEmail] = useState('');
- 
-
+  //사용자 닉네임
+  const [nickName, setNickName] = useState('');
   //비밀번호확인
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -29,20 +30,27 @@ const Auth = ({ isLoggedIn }) => {
       setEmail(value);
     } else if (name === 'password') {
       setPassword(value);
+      setIsPassword(true);
     }
   };
 
   const onSubmit = async (e) => {
     let data; //변수설정
-
     e.preventDefault();
     try {
       //New user 회원가입
       if (newAccount) {
         data = await createUserWithEmailAndPassword(auth, email, password);
         document.location.href = '/';
+        const newUserDb = await addDoc(collection(dbService, 'usersProfile'), {
+          //이메일로 회원가입시  firestore db생성
+          email: email,
+          password: password,
+          nickname: nickName,
+        });
       } else {
         data = await signInWithEmailAndPassword(auth, email, password); //존재하는 유저일 경우
+        document.location.href = '/';
       }
       console.log(data);
     } catch (error) {
@@ -63,7 +71,10 @@ const Auth = ({ isLoggedIn }) => {
       setIsPassword(false);
     }
   };
-
+  const nickNameChange = (e) => {
+    const { value } = e.target;
+    setNickName(value);
+  };
   const toggleAccount = () => {
     setNewAccount((prev) => !prev);
   };
@@ -103,8 +114,17 @@ const Auth = ({ isLoggedIn }) => {
               placeholder='비밀번호확인'
               value={passwordCheck}
               onChange={passwordCheckInput}
+              required
             ></input>
             <span>{passwordCheckMessage}</span>
+            <input
+              name='nickname'
+              type='text'
+              placeholder='이름'
+              value={nickName}
+              onChange={nickNameChange}
+              required
+            ></input>
           </>
         ) : (
           <>

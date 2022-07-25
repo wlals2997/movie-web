@@ -25,6 +25,7 @@ function App() {
       setInit(true); //처음에는 false이나 user의 존재여부를 판명이 되고 true가 되면 해당 화면을 render한다.
     });
   }, []);
+  console.log(userObj)
   const refreshUser = () => {
     const user = auth.currentUser;
     setUserObj({
