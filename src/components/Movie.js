@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-const Movie = ({ medium_cover_image, title, summary, genres, id }) => {
+import { Link } from 'react-router-dom';
+const Movie = ({ medium_cover_image, title, summary, genres, id, onClick }) => {
   return (
     <div>
       <div>
         <div key={id}>
           <img src={medium_cover_image} />
-          <h2>{title}</h2>
+          <Link to={`/movie/${id}`}>
+            <h2 onClick={onClick}>{title}</h2>
+          </Link>
           <p>{summary}</p>
           <ul>
             {genres.map((g) => (

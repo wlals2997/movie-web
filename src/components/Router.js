@@ -6,8 +6,9 @@ import Footer from './Footer';
 import Navigation from './Navigation';
 import Profile from 'routes/Profile';
 import Book from 'routes/Book';
-import Movie from 'routes/MovieSection';
-const AppRouter = ({ isLoggedIn, userObj,refreshUser}) => {
+import MovieSection from 'routes/MovieSection';
+import Detail from 'routes/Detail';
+const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
     <BrowserRouter>
       <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
@@ -21,7 +22,8 @@ const AppRouter = ({ isLoggedIn, userObj,refreshUser}) => {
           </>
         )}
         <Route path='/login' element={<Auth />} isLogged={isLoggedIn}></Route>
-        <Route path='/movie' element={<Movie />}></Route>
+        <Route path='/movie' element={<MovieSection />}></Route>
+        <Route path='/movie/:id' element={<Detail />}></Route>
         <Route path='/' element={<Home />}></Route>
         <Route path='/book' element={<Book />}></Route>
       </Routes>

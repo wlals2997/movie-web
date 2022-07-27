@@ -15,7 +15,9 @@ const MovieSection = () => {
   useEffect(() => {
     getMovies();
   }, []);
-  console.log(movies);
+  const onClick = (e) => {
+    console.log(e.target);
+  };
   return (
     <div>
       {loading ? (
@@ -30,6 +32,7 @@ const MovieSection = () => {
               title={movie.title}
               summary={movie.summary}
               genres={movie.genres}
+              onClick={onClick}
             />
           ))}
         </div>
