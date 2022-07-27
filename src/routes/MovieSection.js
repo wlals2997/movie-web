@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Movie from 'components/Movie';
 
-const Movie = () => {
+const MovieSection = () => {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
@@ -22,22 +23,18 @@ const Movie = () => {
       ) : (
         <div>
           {movies.map((movie) => (
-            <div key={movie.id}>
-                <img src={movie.medium_cover_image}/>
-              <h2>{movie.title}</h2>
-              <p>{movie.summary}</p>
-              <ul>
-                <li>
-                  {movie.genres.map((g) => (
-                    <li key={g}>{g}</li>
-                  ))}
-                </li>
-              </ul>
-            </div>
+            <Movie
+              key={movie.id}
+              id={movie.id}
+              medium_cover_image={movie.medium_cover_image}
+              title={movie.title}
+              summary={movie.summary}
+              genres={movie.genres}
+            />
           ))}
         </div>
       )}
     </div>
   );
 };
-export default Movie;
+export default MovieSection;

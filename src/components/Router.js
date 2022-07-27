@@ -6,7 +6,7 @@ import Footer from './Footer';
 import Navigation from './Navigation';
 import Profile from 'routes/Profile';
 import Book from 'routes/Book';
-import Movie from 'routes/Movie';
+import Movie from 'routes/MovieSection';
 const AppRouter = ({ isLoggedIn, userObj,refreshUser}) => {
   return (
     <BrowserRouter>
