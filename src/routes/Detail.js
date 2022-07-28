@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { dbService } from 'fbase';
-import { doc,updateDoc } from 'firebase/firestore';
+import { doc,setDoc } from 'firebase/firestore';
 const Detail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState([]);
-  const [book, setBook] = useState();
+  //const [book, setBook] = useState();
 
   const getDetail = async () => {
     const json = await (
@@ -19,10 +19,13 @@ const Detail = () => {
   useEffect(() => {
     getDetail();
   }, []);
-  const onClick =async (e) => {
-    await setDoc(doc(dbService,))
-    setBook(detail.title);
+  const onClick =async (e) => { //예매
+    await setDoc(doc(dbService,"usersProfile","book"),{
+      movie:detail.title,
+    })
+    //setBook(detail.title);
   };
+ 
   return (
     <div>
       {loading ? (
