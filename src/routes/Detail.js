@@ -7,6 +7,8 @@ const Detail = () => {
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [time,setTime]=useState('7시30분')
+  const [location,setLocation]=useState('서울')
   const selectMovie = detail.title;
   const getDetail = async () => {
     const json = await (
@@ -28,10 +30,18 @@ const Detail = () => {
     
     await setDoc(doc(dbService, 'usersProfile', 'book'), {
       movie: detail.title,
+      time:time,
+      location:location,
     });
 
     console.log(selectMovie);
   };
+  //예매시간
+  const timeLocation={
+    available1:{
+
+  }}
+  console.log(timeLocation.available1.time)
   return (
     <div>
       {loading ? (
@@ -44,8 +54,12 @@ const Detail = () => {
           <div>
             {toggle ? (
               <>
-                <h1>{selectMovie}</h1>
+                <span>영화: {selectMovie}</span>
+                <span>시간: {time}</span>
+                <span>극장: {location}</span>
+                <div>
                 <button onClick={onClick}>예약</button>
+                </div>
               </>
             ) : null}
           </div>

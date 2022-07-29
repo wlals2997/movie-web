@@ -27,6 +27,8 @@ const Book = () => {
           return (
             <div key={id}>
               {item.movie}
+              <div>{item.time}</div>
+              <div>{item.location}</div>
               <div>{item.email}</div>
               <div>{item.nickname}</div>
             </div>
