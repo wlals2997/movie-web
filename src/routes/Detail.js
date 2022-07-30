@@ -9,7 +9,7 @@ const Detail = () => {
   const [detail, setDetail] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [time, setTime] = useState('');
-  const [location, setLocation] = useState('서울');
+  const [location, setLocation] = useState('');
   const selectMovie = detail.title;
   const getDetail = async () => {
     const json = await (
@@ -35,14 +35,16 @@ const Detail = () => {
 
     console.log(selectMovie);
   };
-//시간예약
-const timeClick=useCallback(
-(e)=>{
-  setTime(e.target.innerText)
-  console.log(time)
-},
-[]
-)
+  //시간예약
+  const timeClick = useCallback((e) => {
+    setTime(e.target.innerText);
+    console.log(time);
+  }, []);
+  //극장예약
+  const locationClick = useCallback((e) => {
+    setLocation(e.target.innerText);
+    console.log(time);
+  }, []);
   return (
     <div>
       {loading ? (
@@ -57,12 +59,17 @@ const timeClick=useCallback(
               <>
                 <span>영화: {selectMovie}</span>
                 {timeData.map((item, i) => (
-                  <div key={i}onClick={timeClick}>
-                  <button >{item.time}</button>
+                  <div key={i} onClick={timeClick}>
+                    <button>{item.time}</button>
                   </div>
                 ))}
-                {/* <span>시간: {time}</span>
-                <span>극장: {location}</span> */}
+                <div>
+                  {locationData.map((item, i) => (
+                    <div key={i} onClick={locationClick}>
+                      <button>{item.location}</button>
+                    </div>
+                  ))}
+                </div>
                 <div>
                   <button onClick={onClick}>예약</button>
                 </div>
