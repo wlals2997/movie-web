@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { doc, setDoc } from 'firebase/firestore';
+import { timeData, locationData } from 'data/Data';
 const Detail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState([]);
   const [toggle, setToggle] = useState(false);
-  const [time,setTime]=useState('7시30분')
-  const [location,setLocation]=useState('서울')
+  const [time, setTime] = useState('');
+  const [location, setLocation] = useState('서울');
   const selectMovie = detail.title;
   const getDetail = async () => {
     const json = await (
@@ -23,25 +24,25 @@ const Detail = () => {
   }, []);
   const onToggle = () => {
     setToggle(true);
-    
   };
- //예매
+  //예매
   const onClick = async (e) => {
-    
     await setDoc(doc(dbService, 'usersProfile', 'book'), {
       movie: detail.title,
-      time:time,
-      location:location,
+      time: time,
+      location: location,
     });
 
     console.log(selectMovie);
   };
-  //예매시간
-  const timeLocation={
-    available1:{
-
-  }}
-  console.log(timeLocation.available1.time)
+//시간예약
+const timeClick=useCallback(
+(e)=>{
+  setTime(e.target.innerText)
+  console.log(time)
+},
+[]
+)
   return (
     <div>
       {loading ? (
@@ -55,10 +56,15 @@ const Detail = () => {
             {toggle ? (
               <>
                 <span>영화: {selectMovie}</span>
-                <span>시간: {time}</span>
-                <span>극장: {location}</span>
+                {timeData.map((item, i) => (
+                  <div key={i}onClick={timeClick}>
+                  <button >{item.time}</button>
+                  </div>
+                ))}
+                {/* <span>시간: {time}</span>
+                <span>극장: {location}</span> */}
                 <div>
-                <button onClick={onClick}>예약</button>
+                  <button onClick={onClick}>예약</button>
                 </div>
               </>
             ) : null}
