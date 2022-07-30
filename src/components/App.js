@@ -15,8 +15,8 @@ function App() {
         setIsLoggedIn(true);
         setUserObj({
           displayName: user.displayName,
-          email:user.email,
-          updateProfile: (args) => user.updateProfile(args),
+          email: user.email,
+          // updateProfile: (args) => user.updateProfile(args),
         });
       } else {
         setIsLoggedIn(false);
@@ -25,21 +25,21 @@ function App() {
       setInit(true); //처음에는 false이나 user의 존재여부를 판명이 되고 true가 되면 해당 화면을 render한다.
     });
   }, []);
-  console.log(userObj)
-  const refreshUser = () => {
-    const user = auth.currentUser;
-    setUserObj({
-      displayName: user.displayName,
-      updateProfile: (args) => user.updateProfile(args),
-    });
-  };
+  console.log(userObj);
+  // const refreshUser = () => {
+  //   const user = auth.currentUser;
+  //   setUserObj({
+  //     displayName: user.displayName,
+  //     updateProfile: (args) => user.updateProfile(args),
+  //   });
+  // };
   return (
     <div className='App'>
       {init ? (
         <AppRouter
-          isLoggedIn={isLoggedIn}
+          isLoggedIn={Boolean(userObj)}
           userObj={userObj}
-          refreshUser={refreshUser}
+          // refreshUser={refreshUser}
         />
       ) : (
         '초기화'

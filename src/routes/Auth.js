@@ -9,7 +9,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { dbService, storageService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
-const Auth = ({ isLoggedIn }) => {
+const Auth = () => {
   //이메일동일확인
   const [email, setEmail] = useState('');
   //사용자 닉네임

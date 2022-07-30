@@ -8,7 +8,7 @@ import Profile from 'routes/Profile';
 import Book from 'routes/Book';
 import MovieSection from 'routes/MovieSection';
 import Detail from 'routes/Detail';
-const AppRouter = ({ isLoggedIn, userObj, refreshUser,book }) => {
+const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
     <BrowserRouter>
       <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
@@ -21,11 +21,14 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser,book }) => {
             ></Route>
           </>
         )}
-        <Route path='/login' element={<Auth />} isLogged={isLoggedIn}></Route>
+        <Route path='/login' element={<Auth />}></Route>
         <Route path='/movie' element={<MovieSection />}></Route>
-        <Route path='/movie/:id' element={<Detail />}></Route>
+        <Route
+          path='/movie/:id'
+          element={<Detail isLoggedIn={isLoggedIn} />}
+        ></Route>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/book' element={<Book  book={book} /> }></Route>
+        <Route path='/book' element={<Book isLoggedIn={isLoggedIn} />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>
