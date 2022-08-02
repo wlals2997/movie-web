@@ -1,8 +1,17 @@
 import React from "react";
+import styled from "styled-components";
+
+const FooterBox=styled.footer`
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+
+`
 
 const Footer=()=>{
 return(
-    <footer>&copy; Movie-web {new Date().getFullYear()}</footer>
+    <FooterBox>&copy; Movie-web {new Date().getFullYear()}</FooterBox>
 )
 }
 export default Footer;

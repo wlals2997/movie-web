@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { dbService } from 'fbase';
-import { doc, setDoc } from 'firebase/firestore';
+import { setDoc, getDoc, doc } from 'firebase/firestore';
 import { timeData, locationData } from 'data/Data';
+
 const Detail = ({ isLoggedIn }) => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -11,6 +12,7 @@ const Detail = ({ isLoggedIn }) => {
   const [time, setTime] = useState('');
   const [location, setLocation] = useState('');
   const selectMovie = detail.title;
+
   const getDetail = async () => {
     const json = await (
       await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
@@ -18,6 +20,7 @@ const Detail = ({ isLoggedIn }) => {
     setDetail(json.data.movie);
     setLoading(false);
     // console.log(json)
+    console.log(detail);
   };
   useEffect(() => {
     getDetail();
@@ -35,6 +38,8 @@ const Detail = ({ isLoggedIn }) => {
 
     console.log(selectMovie);
   };
+  //book doc체크
+
   //시간예약
   const timeClick = useCallback((e) => {
     setTime(e.target.innerText);
@@ -51,6 +56,16 @@ const Detail = ({ isLoggedIn }) => {
         <span>Loading...</span>
       ) : (
         <div>
+          <div>
+            <img src={detail.medium_cover_image} />
+          </div>
+          <div>
+            <span>
+              {detail.genres.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </span>
+          </div>
           <h2>{detail.title}</h2>
           <p>{detail.description_full}</p>
           {isLoggedIn && <button onClick={onToggle}>예매하기</button>}

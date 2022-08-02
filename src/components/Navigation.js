@@ -1,33 +1,53 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
+const Nav = styled.nav`
+  display: flex;
+  padding: 20px 45px;
+  background-color:transparent;
+  justify-content: space-between;
+  align-items: center;
+`;
+const NavTitle=styled(Link)`
+color:#E50813;
+`
+const NavList=styled.ul`
+display:flex;
+`
+const NavMenuLi=styled.li`
+padding:0px 10px;
+`
+const NavMenuTitle=styled(Link)`
+color:white;
+font-weight:560;
+font-size:18px;
+`
 const Navigation = ({ isLoggedIn }) => {
- 
   return (
-    <nav>
+    <Nav>
       <h2>
-        <Link to='/'>영화메인로고</Link>
+        <NavTitle to='/'>MINFLIX</NavTitle>
       </h2>
 
-      <ul>
-        <li>
-          <Link to='/movie'>영화</Link>
-        </li>
-        <li>
-          <Link to='/book'>영화예매</Link>
-        </li>
+      <NavList>
+        <NavMenuLi>
+          <NavMenuTitle to='/movie'>영화</NavMenuTitle>
+        </NavMenuLi>
+        <NavMenuLi>
+          <NavMenuTitle to='/book'>영화예매</NavMenuTitle>
+        </NavMenuLi>
         {isLoggedIn ? (
-          <li>
-            <Link to='/profile'>프로필</Link>
-          </li>
+          <NavMenuLi>
+            <NavMenuTitle to='/profile'>프로필</NavMenuTitle>
+          </NavMenuLi>
         ) : (
-          <li>
-            <Link to='/login'>로그인</Link>
-          </li>
+          <NavMenuLi>
+            <NavMenuTitle to='/login'>로그인</NavMenuTitle>
+          </NavMenuLi>
         )}
-       
-      </ul>
-    </nav>
+      </NavList>
+    </Nav>
   );
 };
 

@@ -25,10 +25,10 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
         <Route path='/movie' element={<MovieSection />}></Route>
         <Route
           path='/movie/:id'
-          element={<Detail isLoggedIn={isLoggedIn} />}
+          element={<Detail isLoggedIn={isLoggedIn}  />}
         ></Route>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/book' element={<Book isLoggedIn={isLoggedIn} userObj={userObj} />}></Route>
+        <Route path='/book' element={<Book isLoggedIn={isLoggedIn} userObj={userObj}  />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>

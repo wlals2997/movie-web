@@ -11,6 +11,7 @@ const MovieSection = () => {
     const json = await response.json();
     setMovies(json.data.movies);
     setLoading(false);
+    console.log(json)
   };
   useEffect(() => {
     getMovies();

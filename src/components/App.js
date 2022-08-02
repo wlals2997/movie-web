@@ -7,6 +7,7 @@ function App() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null); //유저정보
+  const [deleteBook, setDeleteBook] = useState(false);
   useEffect(() => {
     //유저상태의 변화를 감지한다.
     auth.onAuthStateChanged((user) => {
@@ -33,6 +34,7 @@ function App() {
   //     updateProfile: (args) => user.updateProfile(args),
   //   });
   // };
+
   return (
     <div className='App'>
       {init ? (
