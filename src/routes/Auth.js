@@ -14,6 +14,7 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   //사용자 닉네임
   const [nickName, setNickName] = useState('');
+ 
   //비밀번호확인
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -42,7 +43,7 @@ const Auth = () => {
       if (newAccount) {
         data = await createUserWithEmailAndPassword(auth, email, password);
         document.location.href = '/';
-        const newUserDb = await addDoc(collection(dbService, 'usersProfile'), {
+         await addDoc(collection(dbService, 'usersProfile'), {
           //이메일로 회원가입시  firestore db생성
           email: email,
           password: password,

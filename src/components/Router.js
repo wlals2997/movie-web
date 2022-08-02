@@ -28,7 +28,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
           element={<Detail isLoggedIn={isLoggedIn} />}
         ></Route>
         <Route path='/' element={<Home />}></Route>
-        <Route path='/book' element={<Book isLoggedIn={isLoggedIn} />}></Route>
+        <Route path='/book' element={<Book isLoggedIn={isLoggedIn} userObj={userObj} />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>

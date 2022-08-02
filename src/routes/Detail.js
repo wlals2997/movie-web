@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { dbService } from 'fbase';
 import { doc, setDoc } from 'firebase/firestore';
 import { timeData, locationData } from 'data/Data';
-const Detail = ({isLoggedIn}) => {
+const Detail = ({ isLoggedIn }) => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState([]);
@@ -53,12 +53,18 @@ const Detail = ({isLoggedIn}) => {
         <div>
           <h2>{detail.title}</h2>
           <p>{detail.description_full}</p>
-          {isLoggedIn &&  <button onClick={onToggle}>예매하기</button>}
-         
+          {isLoggedIn && <button onClick={onToggle}>예매하기</button>}
+
           <div>
             {toggle ? (
-              <>
+              <div>
                 <span>영화: {selectMovie}</span>
+                <div>
+                  <span>{time}</span>
+                </div>
+                <div>
+                  <span>{location}</span>
+                </div>
                 {timeData.map((item, i) => (
                   <div key={i} onClick={timeClick}>
                     <button>{item.time}</button>
@@ -74,7 +80,7 @@ const Detail = ({isLoggedIn}) => {
                 <div>
                   <button onClick={onClick}>예약</button>
                 </div>
-              </>
+              </div>
             ) : null}
           </div>
         </div>
