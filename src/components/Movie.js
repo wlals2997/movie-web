@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+//motion & gesture 라이브러리
+import { motion } from 'framer-motion';
 const MoviesImg = styled.img`
   border-radius: 1rem;
   width: 100%;
@@ -16,12 +17,19 @@ const MoviesTitle = styled.h4`
 `;
 const Movie = ({ medium_cover_image, title, id, onClick }) => {
   return (
-    <div key={id}>
+    <motion.div
+      key={id}
+      layout
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{duration:1}}
+    >
       <Link to={`/movie/${id}`}>
         <MoviesImg src={medium_cover_image} alt={title} />
         <MoviesTitle onClick={onClick}>{title}</MoviesTitle>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

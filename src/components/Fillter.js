@@ -18,20 +18,18 @@ const FillterBtn = styled.button`
     transition: 0.5s;
   }
 `;
+//장르필터
 const Fillter = ({ setActiveGenre, activeGenre, setFilterItem, movies }) => {
-  const onClick=(e)=>{
+  const onClick = (e) => {
     setFilterItem(e.target.innerText);
-  }
+  };
   return (
     <FillterContainer>
-      <FillterBtn>All</FillterBtn>
       <FillterBtn onClick={onClick}>Drama</FillterBtn>
       <FillterBtn onClick={onClick}>Comedy</FillterBtn>
       <FillterBtn onClick={onClick}>Romance</FillterBtn>
       <FillterBtn onClick={onClick}>Horror</FillterBtn>
-      <FillterBtn onClick={onClick}>
-        Documentary
-      </FillterBtn>
+      <FillterBtn onClick={onClick}>Documentary</FillterBtn>
       <FillterBtn onClick={onClick}>Action</FillterBtn>
       <FillterBtn onClick={onClick}>History</FillterBtn>
       <FillterBtn onClick={onClick}>War</FillterBtn>
