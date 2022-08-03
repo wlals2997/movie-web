@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 const Nav = styled.nav`
   display: flex;
   padding: 20px 45px;
-  background-color:transparent;
+  background-color: transparent;
   justify-content: space-between;
   align-items: center;
 `;
-const NavTitle=styled(Link)`
-color:#E50813;
-`
-const NavList=styled.ul`
-display:flex;
-`
-const NavMenuLi=styled.li`
-padding:0px 10px;
-`
-const NavMenuTitle=styled(Link)`
-color:white;
-font-weight:560;
-font-size:18px;
-`
+const NavTitle = styled(Link)`
+  color: #e50813;
+  font-size: 35px;
+`;
+const NavList = styled.ul`
+  display: flex;
+`;
+const NavMenuLi = styled.li`
+  padding: 0px 10px;
+`;
+const NavMenuTitle = styled(Link)`
+  color: white;
+  font-size: 18px;
+`;
 const Navigation = ({ isLoggedIn }) => {
   return (
     <Nav>
@@ -35,11 +36,13 @@ const Navigation = ({ isLoggedIn }) => {
           <NavMenuTitle to='/movie'>영화</NavMenuTitle>
         </NavMenuLi>
         <NavMenuLi>
-          <NavMenuTitle to='/book'>영화예매</NavMenuTitle>
+          <NavMenuTitle to='/book'>예매</NavMenuTitle>
         </NavMenuLi>
         {isLoggedIn ? (
           <NavMenuLi>
-            <NavMenuTitle to='/profile'>프로필</NavMenuTitle>
+            <NavMenuTitle to='/profile'>
+              <FontAwesomeIcon icon={faUser} />
+            </NavMenuTitle>
           </NavMenuLi>
         ) : (
           <NavMenuLi>

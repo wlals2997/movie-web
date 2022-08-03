@@ -6,9 +6,8 @@ display:flex;
 justify-content:center;
 align-items:center;
 color:white;
-
+padding-top:30px;
 `
-
 const Footer=()=>{
 return(
     <FooterBox>&copy; Movie-web {new Date().getFullYear()}</FooterBox>

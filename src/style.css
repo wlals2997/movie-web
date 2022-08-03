@@ -1,50 +1,53 @@
-*{
+* {
   margin: 0;
-  color:white;
+  color: white;
 }
-body{
-    background-color: black;
-    /* font-family:  "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;  */
-  }
-a{
+body {
+  background-color: black;
+  /* font-family:  "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;  */
+}
+a {
   text-decoration: none;
 }
-ul,ol{
+ul,
+ol {
   list-style: none;
 }
-.container{
-    align-items: center;
-    justify-content: center;   
-    padding: 20px;
+.container {
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 @keyframes scroll {
-    0%{
-        transform: translateX(0);
-    }
-    100%{
-        transform: translateX(calc(-250px *7));
-    }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
 }
-.slider{
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-    width: auto;
+.slider {
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: auto;
 }
-.slide{
-    margin-right: 50px;
+.slide {
+  margin-right: 50px;
 }
 
-.slider .slide-track{
-    animation: scroll 40s linear infinite;
-    display: flex;
-    width: calc(250px *14);
+.slider .slide-track {
+  animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
 }
-img{
-    transition: transform 0.6s;
+img {
+  transition: transform 0.6s;
 }
-img:hover{
-    transform: translateY(-10px);
+img:hover {
+  transform: translateY(-10px);
+  box-shadow: rgba(255, 255, 255, 0.521) 0px 50px 100px -20px,
+    rgba(240, 237, 237, 0.3) 0px 30px 60px -30px;
 }
 
 /* .body-container {
