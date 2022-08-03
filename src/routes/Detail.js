@@ -57,16 +57,20 @@ const Detail = ({ isLoggedIn }) => {
       ) : (
         <div>
           <div>
-            <img src={detail.medium_cover_image} />
+            <img src={detail.medium_cover_image} alt={detail.title} />
           </div>
           <div>
+          <h2>{detail.title}</h2>
+          <span>러닝타임  {detail.runtime}</span>
+          <span>평점  {detail.rating}</span>
             <span>
-              {detail.genres.map((item, i) => (
+            {detail.genres.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </span>
           </div>
-          <h2>{detail.title}</h2>
+         
+          
           <p>{detail.description_full}</p>
           {isLoggedIn && <button onClick={onToggle}>예매하기</button>}
 
