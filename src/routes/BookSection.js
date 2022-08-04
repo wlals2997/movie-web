@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { collection, query, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { dbService } from 'fbase';
+import Book from 'components/Book';
+import styled from 'styled-components';
 
-const Book = ({ isLoggedIn, userObj }) => {
+const BookTicket=styled.div`
+display:grid;
+place-items: center;
+min-height:50vh;
+
+`
+const Test=styled.div`
+background-color:white;
+width:500px;
+
+`
+const Yy=styled.div`
+color:black;
+`
+const BookSection = ({ isLoggedIn, userObj }) => {
   const [book, setBook] = useState([]);
   //유저가 예약한 영화와 프로필 가져오기
-const [bookCheck,setBookCheck]=useState(false);
+  const [bookCheck, setBookCheck] = useState(false);
   const userData = async () => {
     const q = query(collection(dbService, 'usersProfile'));
     const querySnapshot = await getDocs(q);
@@ -15,7 +31,6 @@ const [bookCheck,setBookCheck]=useState(false);
       id: doc.id,
     }));
     setBook(data);
-   
   };
 
   //console.log(book);
@@ -29,29 +44,31 @@ const [bookCheck,setBookCheck]=useState(false);
   };
 
   return (
-    <>
+    <div>
+    <BookTicket>
       {isLoggedIn ? (
-        <div>
-          <span>
-            {book.map((item, id) => {
-              return (
-                <div key={id}>
-                  {item.movie}
-                  <div>{item.time}</div>
-                  <div>{item.location}</div>
-                  <div>{item.nickname}</div>
-                </div>
-              );
-            })}
-            <div>{userObj.email}</div>
-          </span>
-          
+        <Test>
+          {book.map((item, id) => {
+            return (
+              <Book
+                key={item.id}
+                movie={item.movie}
+                time={item.time}
+                location={item.location}
+                nickname={item.nickname}
+                image={item.movieImage}
+              />
+            );
+          })}
+          <Yy>{userObj.email}</Yy>
+
           <button onClick={onClick}>예매취소</button>
-        </div>
+        </Test>
       ) : (
         <span>로그인을 해주세요</span>
       )}
-    </>
+    </BookTicket>
+    </div>
   );
 };
-export default Book;
+export default BookSection;

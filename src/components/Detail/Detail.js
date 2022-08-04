@@ -28,5 +28,8 @@ export const  BookInfo = ({children}) => {
 export const  MovieBookCon = ({children}) => {
   return <Detail.MovieBookCon>{children}</Detail.MovieBookCon>;
 };
+export const  BookLogin = ({children}) => {
+  return <Detail.BookLogin>{children}</Detail.BookLogin>;
+};
  
 

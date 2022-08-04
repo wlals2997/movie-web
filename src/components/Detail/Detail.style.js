@@ -23,7 +23,7 @@ export const DetailInfo = styled.span`
   margin-left: 0.6em;
 `;
 export const DetailGenre = styled.div`
-  margin-top: 0.6em;
+  margin: 0.6em 0;
   font-size: 0.7em;
 `;
 export const BookContainer = styled.div`
@@ -41,4 +41,7 @@ export const MovieBookCon = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const BookLogin=styled(DetailInfo)`
+color:#e50813;
+`
 

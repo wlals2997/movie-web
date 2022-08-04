@@ -9,6 +9,7 @@ import {
   BookContainer,
   BookInfo,
   MovieBookCon,
+  BookLogin,
 } from './Detail.style';
 export {
   DetailContainer,
@@ -21,4 +22,5 @@ export {
   BookContainer,
   BookInfo,
   MovieBookCon,
+  BookLogin,
 };

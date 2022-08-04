@@ -37,6 +37,7 @@ const Detail = ({ isLoggedIn }) => {
       movie: detail.title,
       time: time,
       location: location,
+      movieImage:detail.medium_cover_image,
     });
 
     console.log(selectMovie);
@@ -70,8 +71,10 @@ const Detail = ({ isLoggedIn }) => {
               ))}
             </Dt.DetailGenre>
 
-            {isLoggedIn && (
+            {isLoggedIn ? (
               <Btn.BookBtn onClick={onToggle}>예매하기</Btn.BookBtn>
+            ) : (
+              <Dt.BookLogin>예매는 로그인 후 이용해 주세요</Dt.BookLogin>
             )}
             <div>
               {toggle ? (
