@@ -4,20 +4,19 @@ import { dbService } from 'fbase';
 import Book from 'components/Book';
 import styled from 'styled-components';
 
-const BookTicket=styled.div`
-display:grid;
-place-items: center;
-min-height:50vh;
-
-`
-const Test=styled.div`
-background-color:white;
-width:500px;
-
-`
-const Yy=styled.div`
-color:black;
-`
+const BookTicket = styled.div`
+  display: grid;
+  place-items: center;
+  min-height: 50vh;
+  padding: 30px;
+`;
+const Test = styled.div`
+  background-color: white;
+  width: 500px;
+`;
+const Yy = styled.div`
+  color: black;
+`;
 const BookSection = ({ isLoggedIn, userObj }) => {
   const [book, setBook] = useState([]);
   //유저가 예약한 영화와 프로필 가져오기
@@ -44,22 +43,19 @@ const BookSection = ({ isLoggedIn, userObj }) => {
   };
 
   return (
-    <div>
     <BookTicket>
       {isLoggedIn ? (
         <Test>
-          {book.map((item, id) => {
-            return (
-              <Book
-                key={item.id}
-                movie={item.movie}
-                time={item.time}
-                location={item.location}
-                nickname={item.nickname}
-                image={item.movieImage}
-              />
-            );
-          })}
+          {book.map((item, id) => (
+            <Book
+              key={item.id}
+              movieImage={item.movieImage}
+              movie={item.movie}
+              time={item.time}
+              location={item.location}
+              nickname={item.nickname}
+            />
+          ))}
           <Yy>{userObj.email}</Yy>
 
           <button onClick={onClick}>예매취소</button>
@@ -68,7 +64,6 @@ const BookSection = ({ isLoggedIn, userObj }) => {
         <span>로그인을 해주세요</span>
       )}
     </BookTicket>
-    </div>
   );
 };
 export default BookSection;
