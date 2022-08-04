@@ -10,6 +10,12 @@ const MoviesImg = styled.img`
   height: 30vh;
   object-fit: cover;
   margin: 1rem 0;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: rgba(255, 255, 255, 0.521) 0px 50px 100px -20px,
+      rgba(240, 237, 237, 0.3) 0px 30px 60px -30px;
+  }
+  transition: transform 0.6s;
 `;
 const MoviesTitle = styled.h4`
   font-size: 0.8rem;

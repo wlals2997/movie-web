@@ -43,14 +43,7 @@ ol {
   display: flex;
   width: calc(250px * 14);
 }
-img {
-  transition: transform 0.6s;
-}
-img:hover {
-  transform: translateY(-10px);
-  box-shadow: rgba(255, 255, 255, 0.521) 0px 50px 100px -20px,
-    rgba(240, 237, 237, 0.3) 0px 30px 60px -30px;
-}
+
 .bb{
   color:white;
 }
