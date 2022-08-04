@@ -17,3 +17,13 @@ export const FillterBtn = styled.button`
     transition: 0.5s;
   }
 `;
+export const BookBtn = styled(FillterBtn)`
+  margin-top: 1em;
+  background: #e50813;
+  border: none;
+  border-radius: 0.2em;
+  &:hover {
+    background-color: #ffffff;
+    color: black;
+  }
+`;

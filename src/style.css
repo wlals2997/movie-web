@@ -1,6 +1,7 @@
 * {
   margin: 0;
   color: white;
+  box-sizing: border-box;
 }
 body {
   background-color: black;
@@ -48,6 +49,9 @@ img:hover {
   transform: translateY(-10px);
   box-shadow: rgba(255, 255, 255, 0.521) 0px 50px 100px -20px,
     rgba(240, 237, 237, 0.3) 0px 30px 60px -30px;
+}
+.bb{
+  color:white;
 }
 
 /* .body-container {

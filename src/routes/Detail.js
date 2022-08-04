@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { dbService } from 'fbase';
-import { setDoc, getDoc, doc } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 import { timeData, locationData } from 'data/Data';
+import * as Btn from 'components/Button';
+import * as Dt from 'components/Detail';
+import styled from 'styled-components';
 
 const Detail = ({ isLoggedIn }) => {
   const { id } = useParams();
@@ -26,7 +29,7 @@ const Detail = ({ isLoggedIn }) => {
     getDetail();
   }, []);
   const onToggle = () => {
-    setToggle(true);
+    setToggle((toggle) => !toggle);
   };
   //예매
   const onClick = async (e) => {
@@ -55,54 +58,54 @@ const Detail = ({ isLoggedIn }) => {
       {loading ? (
         <span>Loading...</span>
       ) : (
-        <div>
-          <div>
-            <img src={detail.medium_cover_image} alt={detail.title} />
-          </div>
-          <div>
-          <h2>{detail.title}</h2>
-          <span>러닝타임  {detail.runtime}</span>
-          <span>평점  {detail.rating}</span>
-            <span>
-            {detail.genres.map((item, i) => (
+        <Dt.DetailContainer>
+          <Dt.DetailImg src={detail.medium_cover_image} alt={detail.title} />
+          <Dt.DetailInfoCon>
+            <Dt.DetailTitle>{detail.title}</Dt.DetailTitle>
+            <Dt.DetailInfo>러닝타임 {detail.runtime}</Dt.DetailInfo>
+            <Dt.DetailInfo>평점 {detail.rating}</Dt.DetailInfo>
+            <Dt.DetailGenre>
+              {detail.genres.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
-            </span>
-          </div>
-         
-          
-          <p>{detail.description_full}</p>
-          {isLoggedIn && <button onClick={onToggle}>예매하기</button>}
+            </Dt.DetailGenre>
 
-          <div>
-            {toggle ? (
-              <div>
-                <span>영화: {selectMovie}</span>
-                <div>
-                  <span>{time}</span>
-                </div>
-                <div>
-                  <span>{location}</span>
-                </div>
-                {timeData.map((item, i) => (
-                  <div key={i} onClick={timeClick}>
-                    <button>{item.time}</button>
-                  </div>
-                ))}
-                <div>
-                  {locationData.map((item, i) => (
-                    <div key={i} onClick={locationClick}>
-                      <button>{item.location}</button>
+            {isLoggedIn && (
+              <Btn.BookBtn onClick={onToggle}>예매하기</Btn.BookBtn>
+            )}
+            <div>
+              {toggle ? (
+                <Dt.BookContainer>
+                  <Dt.BookInfo>
+                    <span>선택한 영화: {selectMovie}</span>
+                    <span>선택한 시간: {time}</span>
+                    <span>선택한 극장: {location}</span>
+                  </Dt.BookInfo>
+                  <Dt.MovieBookCon>
+                    <div>
+                      {timeData.map((item, i) => (
+                        <Btn.FillterBtn key={i} onClick={timeClick}>
+                          {item.time}
+                        </Btn.FillterBtn>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                <div>
-                  <button onClick={onClick}>예약</button>
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </div>
+                    <div>
+                      {locationData.map((item, i) => (
+                        <Btn.FillterBtn key={i} onClick={locationClick}>
+                          {item.location}
+                        </Btn.FillterBtn>
+                      ))}
+                    </div>
+                  </Dt.MovieBookCon>
+                  <div>
+                    <Btn.BookBtn onClick={onClick}>예약</Btn.BookBtn>
+                  </div>
+                </Dt.BookContainer>
+              ) : null}
+            </div>
+          </Dt.DetailInfoCon>
+          <Dt.DetailDes>{detail.description_full}</Dt.DetailDes>
+        </Dt.DetailContainer>
       )}
     </div>
   );
