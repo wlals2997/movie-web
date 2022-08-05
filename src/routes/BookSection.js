@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { collection, query, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import Book from 'components/Book';
 import styled from 'styled-components';
@@ -21,15 +21,13 @@ const BookSection = ({ isLoggedIn, userObj }) => {
   const [book, setBook] = useState([]);
   //유저가 예약한 영화와 프로필 가져오기
   const [bookCheck, setBookCheck] = useState(false);
-  const userData = async () => {
-    const q = query(collection(dbService, 'usersProfile'));
-    const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map((doc) => ({
-      // doc.data() is never undefined for query doc snapshots
-      ...doc.data(),
-      id: doc.id,
-    }));
-    setBook(data);
+  const userData = async (book) => {
+    const userRef = doc(dbService, 'usersProfile', 'book');
+    const userSnap = await getDoc(userRef);
+    if (userSnap.exists()) {
+      setBook(userSnap.data());
+    }
+    return null;
   };
 
   //console.log(book);
@@ -46,17 +44,14 @@ const BookSection = ({ isLoggedIn, userObj }) => {
     <BookTicket>
       {isLoggedIn ? (
         <Test>
-          {book.map((item, id) => (
-            <Book
-              key={item.id}
-              movieImage={item.movieImage}
-              movie={item.movie}
-              time={item.time}
-              location={item.location}
-              nickname={item.nickname}
-            />
-          ))}
+          <Book
+            movieImage={book.movieImage}
+            movie={book.movie}
+            time={book.time}
+            location={book.locatio}
+          />
           <Yy>{userObj.email}</Yy>
+          <Yy>{userObj.nickname}</Yy>
 
           <button onClick={onClick}>예매취소</button>
         </Test>

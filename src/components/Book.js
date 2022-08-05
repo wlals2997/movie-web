@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Tt = styled.div`
+const Tt = styled.span`
   color: black;
 `;
 const BookImageTest = styled.img`
@@ -12,12 +12,11 @@ const BookImageTest = styled.img`
 const Book = ({ id, movie, time, location, nickname, movieImage }) => {
   return (
     <div>
-      <BookImageTest src={movieImage} alt={id} />
+      <BookImageTest src={movieImage} alt={movie} />
       <Tt>{movie}</Tt>
       <Tt>{time}</Tt>
       <Tt>{location}</Tt>
-      <Tt>{nickname}</Tt>
-      </div>
+    </div>
   );
 };
 export default Book;
