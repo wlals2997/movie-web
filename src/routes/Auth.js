@@ -79,16 +79,6 @@ const Auth = () => {
   const toggleAccount = () => {
     setNewAccount((prev) => !prev);
   };
-  const onSocialLogin = async (e) => {
-    let provider;
-    const { name } = e.target;
-    if (name === 'google') {
-      provider = new GoogleAuthProvider();
-    }
-    const data = await signInWithPopup(auth, provider);
-    console.log(data);
-    document.location.href = '/';
-  };
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -155,11 +145,7 @@ const Auth = () => {
       </form>
 
       <span onClick={toggleAccount}>{newAccount ? '로그인' : '회원가입'}</span>
-      <div>
-        <button name='google' onClick={onSocialLogin}>
-          구글로 시작하기
-        </button>
-      </div>
+    
     </div>
   );
 };
