@@ -1,35 +1,35 @@
 import React from 'react';
-import * as Detail from './Detail.style';
+import * as DetailCon from './Detail.style';
 
-export const Detail = ({children}) => {
-  return <Detail.DetailContainer>{children}</Detail.DetailContainer>;
+export const DetailContainer = ({children}) => {
+  return <DetailCon.DetailContainer>{children}</DetailCon.DetailContainer>;
 };
 export const DetailImg = ({children}) => {
-  return <Detail.DetailImg>{children}</Detail.DetailImg>;
+  return <DetailCon.DetailImg>{children}</DetailCon.DetailImg>;
 };
 export const DetailDes = ({children}) => {
-  return <Detail.DetailDe>{children}</Detail.DetailDe>;
+  return <DetailCon.DetailDes>{children}</DetailCon.DetailDes>;
 };
 export const DetailInfoCon = ({children}) => {
-  return <Detail.DetailInfoCon>{children}</Detail.DetailInfoCon>;
+  return <DetailCon.DetailInfoCon>{children}</DetailCon.DetailInfoCon>;
 };
 export const  DetailTitle = ({children}) => {
-  return <Detail.DetailTitle>{children}</Detail.DetailTitle>;
+  return <DetailCon.DetailTitle>{children}</DetailCon.DetailTitle>;
 };
 export const  DetailInfo = ({children}) => {
-  return <Detail.DetailInfo>{children}</Detail.DetailInfo>;
+  return <DetailCon.DetailInfo>{children}</DetailCon.DetailInfo>;
 };
 export const  BookContainer = ({children}) => {
-  return <Detail.BookContainer>{children}</Detail.BookContainer>;
+  return <DetailCon.BookContainer>{children}</DetailCon.BookContainer>;
 };
 export const  BookInfo = ({children}) => {
-  return <Detail.BookInfo>{children}</Detail.BookInfo>;
+  return <DetailCon.BookInfo>{children}</DetailCon.BookInfo>;
 };
 export const  MovieBookCon = ({children}) => {
-  return <Detail.MovieBookCon>{children}</Detail.MovieBookCon>;
+  return <DetailCon.MovieBookCon>{children}</DetailCon.MovieBookCon>;
 };
 export const  BookLogin = ({children}) => {
-  return <Detail.BookLogin>{children}</Detail.BookLogin>;
+  return <DetailCon.BookLogin>{children}</DetailCon.BookLogin>;
 };
  
 

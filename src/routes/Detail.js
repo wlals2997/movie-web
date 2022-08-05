@@ -4,7 +4,7 @@ import { dbService } from 'fbase';
 import { setDoc, doc } from 'firebase/firestore';
 import { timeData, locationData } from 'data/Data';
 import * as Btn from 'components/Button';
-import * as Dt from 'components/Detail';
+import * as DetailCon from 'components/Detail';
 import styled from 'styled-components';
 
 const Detail = ({ isLoggedIn }) => {
@@ -59,32 +59,32 @@ const Detail = ({ isLoggedIn }) => {
       {loading ? (
         <span>Loading...</span>
       ) : (
-        <Dt.DetailContainer>
-          <Dt.DetailImg src={detail.medium_cover_image} alt={detail.title} />
-          <Dt.DetailInfoCon>
-            <Dt.DetailTitle>{detail.title}</Dt.DetailTitle>
-            <Dt.DetailInfo>러닝타임 {detail.runtime}</Dt.DetailInfo>
-            <Dt.DetailInfo>평점 {detail.rating}</Dt.DetailInfo>
-            <Dt.DetailGenre>
+        <DetailCon.DetailContainer>
+          <DetailCon.DetailImg src={detail.medium_cover_image} alt={detail.title} />
+          <DetailCon.DetailInfoCon>
+            <DetailCon.DetailTitle>{detail.title}</DetailCon.DetailTitle>
+            <DetailCon.DetailInfo>러닝타임 {detail.runtime}</DetailCon.DetailInfo>
+            <DetailCon.DetailInfo>평점 {detail.rating}</DetailCon.DetailInfo>
+            <DetailCon.DetailGenre>
               {detail.genres.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
-            </Dt.DetailGenre>
+            </DetailCon.DetailGenre>
 
             {isLoggedIn ? (
               <Btn.BookBtn onClick={onToggle}>예매하기</Btn.BookBtn>
             ) : (
-              <Dt.BookLogin>예매는 로그인 후 이용해 주세요</Dt.BookLogin>
+              <DetailCon.BookLogin>예매는 로그인 후 이용해 주세요</DetailCon.BookLogin>
             )}
             <div>
               {toggle ? (
-                <Dt.BookContainer>
-                  <Dt.BookInfo>
+                <DetailCon.BookContainer>
+                  <DetailCon.BookInfo>
                     <span>선택한 영화: {selectMovie}</span>
                     <span>선택한 시간: {time}</span>
                     <span>선택한 극장: {location}</span>
-                  </Dt.BookInfo>
-                  <Dt.MovieBookCon>
+                  </DetailCon.BookInfo>
+                  <DetailCon.MovieBookCon>
                     <div>
                       {timeData.map((item, i) => (
                         <Btn.FillterBtn key={i} onClick={timeClick}>
@@ -99,16 +99,16 @@ const Detail = ({ isLoggedIn }) => {
                         </Btn.FillterBtn>
                       ))}
                     </div>
-                  </Dt.MovieBookCon>
+                  </DetailCon.MovieBookCon>
                   <div>
                     <Btn.BookBtn onClick={onClick}>예약</Btn.BookBtn>
                   </div>
-                </Dt.BookContainer>
+                </DetailCon.BookContainer>
               ) : null}
             </div>
-          </Dt.DetailInfoCon>
-          <Dt.DetailDes>{detail.description_full}</Dt.DetailDes>
-        </Dt.DetailContainer>
+          </DetailCon.DetailInfoCon>
+          <DetailCon.DetailDes>{detail.description_full}</DetailCon.DetailDes>
+        </DetailCon.DetailContainer>
       )}
     </div>
   );

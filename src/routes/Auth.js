@@ -3,12 +3,13 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { dbService, storageService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
+import LoginImg from 'components/LoginImg';
+import * as LoginCon from 'components/Login';
+
 const Auth = () => {
   //이메일동일확인
   const [email, setEmail] = useState('');
@@ -80,10 +81,11 @@ const Auth = () => {
     setNewAccount((prev) => !prev);
   };
   return (
-    <div>
+    <LoginCon.LoginContainer>
+      <LoginImg/>
       <form onSubmit={onSubmit}>
         {newAccount ? (
-          <>
+          <div>
             <input
               name='email'
               type='text'
@@ -116,9 +118,9 @@ const Auth = () => {
               onChange={nickNameChange}
               required
             ></input>
-          </>
+          </div>
         ) : (
-          <>
+          <div>
             <input
               name='email'
               type='text'
@@ -134,7 +136,7 @@ const Auth = () => {
               value={password}
               onChange={onChange}
             ></input>
-          </>
+          </div>
         )}
 
         <input
@@ -146,7 +148,7 @@ const Auth = () => {
 
       <span onClick={toggleAccount}>{newAccount ? '로그인' : '회원가입'}</span>
     
-    </div>
+    </LoginCon.LoginContainer>
   );
 };
 export default Auth;
