@@ -1,21 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Tt = styled.span`
+const BookTicketInfo = styled.div`
   color: black;
+  font-weight:600;
+`;
+const BookTitle = styled.h4`
+  color: #c0c0c0;
+  font-size: 0.6em;
+  padding: 0.6em 0;
 `;
 const BookImageTest = styled.img`
   width: 100%;
   height: 30vh;
   object-fit: cover;
+  font-size: 24px;
 `;
+const BookDetailCon = styled.div`
+  font-size: 24px;
+  padding: 1em;
+`;
+const BookDetail = styled.div``;
 const Book = ({ id, movie, time, location, nickname, movieImage }) => {
   return (
     <div>
       <BookImageTest src={movieImage} alt={movie} />
-      <Tt>{movie}</Tt>
-      <Tt>{time}</Tt>
-      <Tt>{location}</Tt>
+      <BookDetailCon>
+        <BookTitle>영화</BookTitle>
+        <BookTicketInfo>{movie}</BookTicketInfo>
+        <BookDetail>
+          <BookTitle>시간</BookTitle>
+          <BookTicketInfo>{time}</BookTicketInfo>
+          <BookTitle>극장</BookTitle>
+          <BookTicketInfo>{location}</BookTicketInfo>
+        </BookDetail>
+      </BookDetailCon>
     </div>
   );
 };

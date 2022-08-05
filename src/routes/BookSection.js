@@ -3,19 +3,20 @@ import { deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import Book from 'components/Book';
 import styled from 'styled-components';
-
+import * as Btn from 'components/Button';
 const BookTicket = styled.div`
   display: grid;
   place-items: center;
   min-height: 50vh;
   padding: 30px;
 `;
-const Test = styled.div`
+const BookTicketCon = styled.div`
   background-color: white;
-  width: 500px;
+  width: 25%;
+  margin-top: 1.6em;
 `;
-const Yy = styled.div`
-  color: black;
+const Yy = styled.span`
+  text-align: left;
 `;
 const BookSection = ({ isLoggedIn, userObj }) => {
   const [book, setBook] = useState([]);
@@ -42,19 +43,18 @@ const BookSection = ({ isLoggedIn, userObj }) => {
 
   return (
     <BookTicket>
+      <h3>My Ticket</h3>
+
       {isLoggedIn ? (
-        <Test>
+        <BookTicketCon>
           <Book
             movieImage={book.movieImage}
             movie={book.movie}
             time={book.time}
-            location={book.locatio}
+            location={book.location}
           />
-          <Yy>{userObj.email}</Yy>
-          <Yy>{userObj.nickname}</Yy>
-
-          <button onClick={onClick}>예매취소</button>
-        </Test>
+          <Btn.BookBtn onClick={onClick}>예매취소</Btn.BookBtn>
+        </BookTicketCon>
       ) : (
         <span>로그인을 해주세요</span>
       )}
