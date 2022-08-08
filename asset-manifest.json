@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/movie-web/static/css/main.13b8de9a.css",
-    "main.js": "/movie-web/static/js/main.7c5b381b.js",
-    "static/js/787.80ff975f.chunk.js": "/movie-web/static/js/787.80ff975f.chunk.js",
-    "index.html": "/movie-web/index.html",
-    "main.13b8de9a.css.map": "/movie-web/static/css/main.13b8de9a.css.map",
-    "main.7c5b381b.js.map": "/movie-web/static/js/main.7c5b381b.js.map",
-    "787.80ff975f.chunk.js.map": "/movie-web/static/js/787.80ff975f.chunk.js.map"
+    "main.css": "https://wlals2997.github.io/movie-web/static/css/main.13b8de9a.css",
+    "main.js": "https://wlals2997.github.io/movie-web/static/js/main.6ff3f334.js",
+    "static/js/787.80ff975f.chunk.js": "https://wlals2997.github.io/movie-web/static/js/787.80ff975f.chunk.js",
+    "index.html": "https://wlals2997.github.io/movie-web/index.html",
+    "main.13b8de9a.css.map": "https://wlals2997.github.io/movie-web/static/css/main.13b8de9a.css.map",
+    "main.6ff3f334.js.map": "https://wlals2997.github.io/movie-web/static/js/main.6ff3f334.js.map",
+    "787.80ff975f.chunk.js.map": "https://wlals2997.github.io/movie-web/static/js/787.80ff975f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.13b8de9a.css",
-    "static/js/main.7c5b381b.js"
+    "static/js/main.6ff3f334.js"
   ]
 }
