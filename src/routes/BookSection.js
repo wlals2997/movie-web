@@ -17,9 +17,7 @@ const BookTicketCon = styled.div`
   margin-top: 1.6em;
   border-radius:2%;
 `;
-const Yy = styled.span`
-  text-align: left;
-`;
+
 const BookSection = ({ isLoggedIn, userObj }) => {
   const [book, setBook] = useState([]);
   //유저가 예약한 영화와 프로필 가져오기

@@ -10,7 +10,7 @@ const BookTitle = styled.h4`
   font-size: 0.6em;
   padding: 0.6em 0;
 `;
-const BookImageTest = styled.img`
+const BookImage = styled.img`
   width: 100%;
   height: 30vh;
   object-fit: cover;
@@ -25,7 +25,7 @@ const BookDetail = styled.div``;
 const Book = ({ id, movie, time, location, nickname, movieImage }) => {
   return (
     <div>
-      <BookImageTest src={movieImage} alt={movie} />
+      <BookImage src={movieImage} alt={movie} />
       <BookDetailCon>
         <BookTitle>영화</BookTitle>
         <BookTicketInfo>{movie}</BookTicketInfo>
