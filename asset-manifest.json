@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "https://wlals2997.github.io/movie-web/static/css/main.13b8de9a.css",
+    "main.js": "https://wlals2997.github.io/movie-web/static/js/main.c80525cb.js",
+    "static/js/787.80ff975f.chunk.js": "https://wlals2997.github.io/movie-web/static/js/787.80ff975f.chunk.js",
+    "index.html": "https://wlals2997.github.io/movie-web/index.html",
+    "main.13b8de9a.css.map": "https://wlals2997.github.io/movie-web/static/css/main.13b8de9a.css.map",
+    "main.c80525cb.js.map": "https://wlals2997.github.io/movie-web/static/js/main.c80525cb.js.map",
+    "787.80ff975f.chunk.js.map": "https://wlals2997.github.io/movie-web/static/js/787.80ff975f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.13b8de9a.css",
+    "static/js/main.c80525cb.js"
+  ]
+}
