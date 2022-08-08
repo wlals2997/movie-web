@@ -47,6 +47,13 @@ ol {
 .bb{
   color:white;
 }
+.gg{
+  margin-top: 1em;
+  background: #e50813;
+  border: none;
+  border-radius: 0.2em;
+  
+}
 
 /* .body-container {
   min-height: 100vh;

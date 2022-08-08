@@ -4,18 +4,33 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import { dbService, storageService } from 'fbase';
+import { dbService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
-import LoginImg from 'components/LoginImg';
 import * as LoginCon from 'components/Login';
+import styled from 'styled-components';
 
+const LoginTitle=styled.h1`
+margin-bottom:1em;
+`
+
+const Gg = styled.input`
+  margin-top: 1em;
+  background: #e50813;
+  border: none;
+  border-radius: 0.2em;
+  &:hover {
+    background-color: #ffffff;
+    color: black;
+  }
+  padding: 0.6em 2.5em;
+  font-size: 0.8em;
+`;
 const Auth = () => {
   //이메일동일확인
   const [email, setEmail] = useState('');
   //사용자 닉네임
   const [nickName, setNickName] = useState('');
- 
+
   //비밀번호확인
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -44,7 +59,7 @@ const Auth = () => {
       if (newAccount) {
         data = await createUserWithEmailAndPassword(auth, email, password);
         document.location.href = '/';
-         await addDoc(collection(dbService, 'usersProfile'), {
+        await addDoc(collection(dbService, 'usersProfile'), {
           //이메일로 회원가입시  firestore db생성
           email: email,
           password: password,
@@ -82,72 +97,80 @@ const Auth = () => {
   };
   return (
     <LoginCon.LoginContainer>
-      <LoginImg/>
       <form onSubmit={onSubmit}>
         {newAccount ? (
-          <div>
-            <input
+          <LoginCon.LoginBox>
+            <LoginTitle>회원가입</LoginTitle>
+            <LoginCon.LoginInput
               name='email'
               type='text'
-              placeholder='이메일'
               value={email}
+              placeholder='이메일'
               onChange={onChange}
               required
-            ></input>
-            <input
+            ></LoginCon.LoginInput>
+
+            <LoginCon.LoginInput
               name='password'
               type='password'
               placeholder='비밀번호'
               value={password}
               onChange={onChange}
-            ></input>
-            <input
+            ></LoginCon.LoginInput>
+
+            {/* <span>{passwordCheckMessage}</span> */}
+            <LoginCon.LoginInput
               name='passwordCheck'
               type='password'
-              placeholder='비밀번호확인'
+              placeholder='비밀번호 확인'
               value={passwordCheck}
               onChange={passwordCheckInput}
               required
-            ></input>
-            <span>{passwordCheckMessage}</span>
-            <input
+            ></LoginCon.LoginInput>
+
+            <LoginCon.LoginInput
               name='nickname'
               type='text'
               placeholder='이름'
               value={nickName}
               onChange={nickNameChange}
               required
-            ></input>
-          </div>
+            ></LoginCon.LoginInput>
+          </LoginCon.LoginBox>
         ) : (
-          <div>
-            <input
+          <LoginCon.LoginBox>
+            <LoginTitle>로그인</LoginTitle>
+            <LoginCon.LoginInput
               name='email'
               type='text'
               placeholder='이메일'
               value={email}
               onChange={onChange}
               required
-            ></input>
-            <input
+            ></LoginCon.LoginInput>
+
+            <LoginCon.LoginInput
               name='password'
               type='password'
               placeholder='비밀번호'
               value={password}
               onChange={onChange}
-            ></input>
-          </div>
+            ></LoginCon.LoginInput>
+          </LoginCon.LoginBox>
         )}
-
-        <input
-          type='submit'
-          value={newAccount ? '회원가입' : '로그인'}
-          disabled={!isPassword}
-        ></input>
+        <LoginCon.LoginBox>
+          <Gg
+            type='submit'
+            value={newAccount ? '회원가입' : '로그인'}
+            disabled={!isPassword}
+            className='gg'
+          ></Gg>
+        </LoginCon.LoginBox>
       </form>
 
-      <span onClick={toggleAccount}>{newAccount ? '로그인' : '회원가입'}</span>
-    
+      <LoginCon.ToggleBtn onClick={toggleAccount}>
+        {newAccount ? '로그인' : '회원가입'}
+      </LoginCon.ToggleBtn>
     </LoginCon.LoginContainer>
   );
 };

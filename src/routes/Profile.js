@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { getDocs, collection, query } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import * as LoginCon from 'components/Login';
-import LoginImg from 'components/LoginImg';
+
 const Profile = ({ userObj }) => {
   const [userName, setUserName] = useState([]);
   const getUser = async () => {
@@ -48,7 +48,6 @@ const Profile = ({ userObj }) => {
   // };
   return (
     <LoginCon.LoginContainer>
-      <LoginImg/>
       <div>{userName.nickname}</div>
       <div>{userObj.email}</div>
       <button onClick={onLogoutClick}>Logout</button>
