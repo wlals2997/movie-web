@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import Home from '../routes/HomeSection';
 import Auth from '../routes/Auth';
 import Footer from './Footer';
@@ -10,7 +10,7 @@ import MovieSection from 'routes/MovieSection';
 import Detail from 'routes/Detail';
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
-    <BrowserRouter>
+   <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
       <Routes>
         {isLoggedIn && (
@@ -31,7 +31,7 @@ const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
         <Route path='/book' element={<BookSection isLoggedIn={isLoggedIn} userObj={userObj}  />}></Route>
       </Routes>
       <Footer />
-    </BrowserRouter>
+      </BrowserRouter>
   );
 };
 export default AppRouter;
