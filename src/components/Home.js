@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+
 const Home = ({ item }) => {
   return (
     <div className='slide' key={item.id}>

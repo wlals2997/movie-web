@@ -20,6 +20,7 @@ ol {
   justify-content: center;
   padding: 20px;
 }
+/* 메인화면 애니메이션 */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -47,13 +48,7 @@ ol {
 .bb{
   color:white;
 }
-.gg{
-  margin-top: 1em;
-  background: #e50813;
-  border: none;
-  border-radius: 0.2em;
-  
-}
+
 
 /* .body-container {
   min-height: 100vh;

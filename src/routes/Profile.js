@@ -1,5 +1,4 @@
 import { auth } from 'fbase';
-import { updateProfile } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDocs, collection, query } from 'firebase/firestore';

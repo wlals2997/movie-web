@@ -9,7 +9,7 @@ import { addDoc, collection } from 'firebase/firestore';
 import * as LoginCon from 'components/Login';
 import styled from 'styled-components';
 
-const Gg = styled.input`
+const SigninBtn = styled.input`
   margin-top: 1em;
   background: #e50813;
   border: none;
@@ -21,7 +21,12 @@ const Gg = styled.input`
   padding: 0.6em 2.5em;
   font-size: 0.8em;
 `;
+const PasswordCheck = styled.span`
+  font-size: 0.8em;
+  margin-bottom: 0.6em;
+`;
 const Auth = () => {
+  //유저회원가입시 이름,아이디,비밀번호 doc저장
   const [profile, setProfile] = useState([]);
   //이메일동일확인
   const [email, setEmail] = useState('');
@@ -62,7 +67,7 @@ const Auth = () => {
           password: password,
           nickname: nickName,
         });
-        console.log(userRef)
+        console.log(userRef);
       } else {
         data = await signInWithEmailAndPassword(auth, email, password); //존재하는 유저일 경우
         document.location.href = '/';
@@ -116,7 +121,7 @@ const Auth = () => {
               onChange={onChange}
             ></LoginCon.LoginInput>
 
-            {/* <span>{passwordCheckMessage}</span> */}
+            <PasswordCheck>{passwordCheckMessage}</PasswordCheck>
             <LoginCon.LoginInput
               name='passwordCheck'
               type='password'
@@ -157,12 +162,11 @@ const Auth = () => {
           </LoginCon.LoginBox>
         )}
         <LoginCon.LoginBox>
-          <Gg
+          <SigninBtn
             type='submit'
             value={newAccount ? '회원가입' : '로그인'}
             disabled={!isPassword}
-            className='gg'
-          ></Gg>
+          ></SigninBtn>
         </LoginCon.LoginBox>
       </form>
 

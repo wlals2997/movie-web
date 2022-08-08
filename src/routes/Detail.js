@@ -5,7 +5,7 @@ import { setDoc, doc } from 'firebase/firestore';
 import { timeData, locationData } from 'data/Data';
 import * as Btn from 'components/Button';
 import * as DetailCon from 'components/Detail';
-import styled from 'styled-components';
+
 
 const Detail = ({ isLoggedIn }) => {
   const { id } = useParams();

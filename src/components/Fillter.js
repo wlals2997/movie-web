@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import * as Btn from 'components/Button';
 
 
