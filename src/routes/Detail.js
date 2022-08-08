@@ -39,7 +39,7 @@ const Detail = ({ isLoggedIn }) => {
       location: location,
       movieImage:detail.medium_cover_image,
     });
-
+    document.location.href = '/book';
     console.log(selectMovie);
   };
   //book doc체크
