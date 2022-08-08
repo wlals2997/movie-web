@@ -16,3 +16,4 @@ export const LoginTitle = ({children}) => {
   return <LoginCon.LoginTitle>{children}</LoginCon.LoginTitle>;
 };
 
+

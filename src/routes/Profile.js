@@ -4,7 +4,32 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDocs, collection, query } from 'firebase/firestore';
 import { dbService } from 'fbase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import * as LoginCon from 'components/Login';
+import * as Btn from 'components/Button';
+import styled from 'styled-components';
+
+const ProfileBox = styled.div`
+  background-color: #333333;
+  text-align: center;
+  border-radius: 2%;
+  padding: 4% 6%;
+`;
+const ProfileIcon = styled.div`
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border: 4px solid white;
+  border-radius: 50%;
+  padding: 5%;
+`;
+const ProfileInfo = styled.div`
+  margin-top:25%;
+`;
+const EmailInfo=styled(ProfileInfo)`
+margin-bottom:15%;
+`
 
 const Profile = ({ userObj }) => {
   const [userName, setUserName] = useState([]);
@@ -27,7 +52,7 @@ const Profile = ({ userObj }) => {
   const onLogoutClick = () => {
     auth.signOut();
     navigate('/');
-  };//로그아웃
+  }; //로그아웃
 
   //이름 수정 함수
   // const getUserData = async () => {};
@@ -48,10 +73,15 @@ const Profile = ({ userObj }) => {
   // };
   return (
     <LoginCon.LoginContainer>
-      <h1>프로필</h1>
-      <div>{userName.nickname}</div>
-      <div>{userObj.email}</div>
-      <button onClick={onLogoutClick}>Logout</button>
+      <LoginCon.LoginTitle>프로필</LoginCon.LoginTitle>
+      <ProfileBox>
+        <ProfileIcon>
+          <FontAwesomeIcon icon={faUser} size='3x' />
+        </ProfileIcon>
+        <ProfileInfo>{userName.nickname}</ProfileInfo>
+        <EmailInfo>{userObj.email}</EmailInfo>
+        <Btn.BookBtn onClick={onLogoutClick}>Logout</Btn.BookBtn>
+      </ProfileBox>
     </LoginCon.LoginContainer>
   );
 };

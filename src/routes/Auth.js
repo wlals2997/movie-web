@@ -9,10 +9,6 @@ import { addDoc, collection } from 'firebase/firestore';
 import * as LoginCon from 'components/Login';
 import styled from 'styled-components';
 
-const LoginTitle = styled.h1`
-  margin-bottom: 1em;
-`;
-
 const Gg = styled.input`
   margin-top: 1em;
   background: #e50813;
@@ -102,7 +98,7 @@ const Auth = () => {
       <form onSubmit={onSubmit}>
         {newAccount ? (
           <LoginCon.LoginBox>
-            <LoginTitle>회원가입</LoginTitle>
+            <LoginCon.LoginTitle>회원가입</LoginCon.LoginTitle>
             <LoginCon.LoginInput
               name='email'
               type='text'
@@ -141,7 +137,7 @@ const Auth = () => {
           </LoginCon.LoginBox>
         ) : (
           <LoginCon.LoginBox>
-            <LoginTitle>로그인</LoginTitle>
+            <LoginCon.LoginTitle>로그인</LoginCon.LoginTitle>
             <LoginCon.LoginInput
               name='email'
               type='text'

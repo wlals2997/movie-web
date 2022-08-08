@@ -13,9 +13,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 `;
-export const LoginTitle=styled.span`
-font-size:0.6em;
-`
+
 export const LoginInput = styled.input`
   margin-bottom: 10%;
   background-color: #333333;
@@ -34,4 +32,6 @@ border-radius: 0.2em;
 padding:0.6em 3em;
 font-size:0.8em;
 `;
-
+export const LoginTitle = styled.h1`
+  margin-bottom: 1em;
+`;
