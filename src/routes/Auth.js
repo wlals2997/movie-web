@@ -9,9 +9,9 @@ import { addDoc, collection } from 'firebase/firestore';
 import * as LoginCon from 'components/Login';
 import styled from 'styled-components';
 
-const LoginTitle=styled.h1`
-margin-bottom:1em;
-`
+const LoginTitle = styled.h1`
+  margin-bottom: 1em;
+`;
 
 const Gg = styled.input`
   margin-top: 1em;
@@ -26,6 +26,7 @@ const Gg = styled.input`
   font-size: 0.8em;
 `;
 const Auth = () => {
+  const [profile, setProfile] = useState([]);
   //이메일동일확인
   const [email, setEmail] = useState('');
   //사용자 닉네임
@@ -59,12 +60,13 @@ const Auth = () => {
       if (newAccount) {
         data = await createUserWithEmailAndPassword(auth, email, password);
         document.location.href = '/';
-        await addDoc(collection(dbService, 'usersProfile'), {
+        const userRef = await addDoc(collection(dbService, 'usersProfile'), {
           //이메일로 회원가입시  firestore db생성
           email: email,
           password: password,
           nickname: nickName,
         });
+        console.log(userRef)
       } else {
         data = await signInWithEmailAndPassword(auth, email, password); //존재하는 유저일 경우
         document.location.href = '/';

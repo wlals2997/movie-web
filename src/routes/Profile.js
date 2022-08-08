@@ -48,6 +48,7 @@ const Profile = ({ userObj }) => {
   // };
   return (
     <LoginCon.LoginContainer>
+      <h1>프로필</h1>
       <div>{userName.nickname}</div>
       <div>{userObj.email}</div>
       <button onClick={onLogoutClick}>Logout</button>
