@@ -9,11 +9,13 @@ const BookTicket = styled.div`
   place-items: center;
   min-height: 50vh;
   padding: 30px;
+  
 `;
 const BookTicketCon = styled.div`
   background-color: white;
   width: 25%;
   margin-top: 1.6em;
+  border-radius:2%;
 `;
 const Yy = styled.span`
   text-align: left;

@@ -15,6 +15,7 @@ const BookImageTest = styled.img`
   height: 30vh;
   object-fit: cover;
   font-size: 24px;
+  border-radius:2%;
 `;
 const BookDetailCon = styled.div`
   font-size: 24px;
