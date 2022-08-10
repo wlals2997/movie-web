@@ -8,7 +8,7 @@ import { dbService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
 import * as LoginCon from 'components/Login';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 const SigninBtn = styled.input`
   margin-top: 1em;
   background: #e50813;
@@ -54,13 +54,14 @@ const Auth = () => {
   };
 
   const onSubmit = async (e) => {
+    const navigate=useNavigate();
     let data; //변수설정
     e.preventDefault();
     try {
       //New user 회원가입
       if (newAccount) {
         data = await createUserWithEmailAndPassword(auth, email, password);
-        document.location.href = '/';
+        navigate('/');
         const userRef = await addDoc(collection(dbService, 'usersProfile'), {
           //이메일로 회원가입시  firestore db생성
           email: email,
@@ -70,7 +71,7 @@ const Auth = () => {
         console.log(userRef);
       } else {
         data = await signInWithEmailAndPassword(auth, email, password); //존재하는 유저일 경우
-        document.location.href = '/';
+        navigate('/');
       }
       console.log(data);
     } catch (error) {
