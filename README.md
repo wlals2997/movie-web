@@ -70,7 +70,7 @@ useParams() 함수를 이용하여 클릭한 영화의 id에 맞는 페이지로
 YTS에서 제공하는 영화 api를 async await을 이용하여 api를 연결합니다.
 영화 데이터를 저장한 movies배열을 이용해 map으로 렌더링 합니다.
 
-#### 영화 카테고리 fillter목록 
+#### 영화 카테고리 filter목록 
 ~~~ react
   const [filterItem, setFilterItem] = useState('');
 
