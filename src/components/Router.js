@@ -10,7 +10,7 @@ import MovieSection from 'routes/MovieSection';
 import Detail from 'routes/Detail';
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
   return (
-   <BrowserRouter basename={process.env.PUBLIC_URL}>
+   <BrowserRouter basename='/movie-web'>
       <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
       <Routes>
         {isLoggedIn && (

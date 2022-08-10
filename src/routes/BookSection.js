@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { dbService } from 'fbase';
 import Book from 'components/Book';
@@ -19,6 +20,7 @@ const BookTicketCon = styled.div`
 `;
 
 const BookSection = ({ isLoggedIn, userObj }) => {
+  const navigate=useNavigate();
   const [book, setBook] = useState([]);
   //유저가 예약한 영화와 프로필 가져오기
   const [bookCheck, setBookCheck] = useState(false);
@@ -38,7 +40,8 @@ const BookSection = ({ isLoggedIn, userObj }) => {
   //예매취소
   const onClick = async () => {
     await deleteDoc(doc(dbService, 'usersProfile', 'book'));
-    document.location.href = '/movie';
+    navigate('/movie');
+    //document.location.href = '/movie';
   };
 
   return (
