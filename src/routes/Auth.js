@@ -26,6 +26,7 @@ const PasswordCheck = styled.span`
   margin-bottom: 0.6em;
 `;
 const Auth = () => {
+  const navigate=useNavigate();
   //유저회원가입시 이름,아이디,비밀번호 doc저장
   const [profile, setProfile] = useState([]);
   //이메일동일확인
@@ -54,7 +55,7 @@ const Auth = () => {
   };
 
   const onSubmit = async (e) => {
-    const navigate=useNavigate();
+   
     let data; //변수설정
     e.preventDefault();
     try {
